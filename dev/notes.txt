@@ -6,3 +6,7 @@
 
 - x change to home/work
 - x change to todo list
+- x reformat layout
+- x put in scrolling on box
+- 
+
