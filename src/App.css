@@ -5,11 +5,14 @@ body {
 }
 
 .App {
+  display: flex;
+  flex-wrap: wrap;
   padding: 20px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .App .todoListComponent {
+  margin: 0 10px 10px 0;
   background: #777;
   width: 310px;
   padding: 15px;
@@ -30,11 +33,18 @@ body {
   margin: 0 15px 0 0;
 }
 
+.App .todoListComponent form span {
+  color: #f7f78c;
+  font-size: .8rem;
+  position: relative;
+  top: -3px;
+}
+
 .App .todoListComponent form button.clearButton {
   outline: none;
   border: none;
   top: -3px;
-  left: 70px;
+  left: 16px;
   position: relative;
   color: #333;
   background-color: #888;
@@ -47,6 +57,7 @@ body {
 .App .todoListComponent form .inputArea input[type="text"] {
   margin: 0 5px 0 0;
   font-size: 1.2rem;
+  width: 200px;
 }
 
 .App .todoListComponent form .inputArea button {

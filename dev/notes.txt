@@ -8,5 +8,12 @@
 - x change to todo list
 - x reformat layout
 - x put in scrolling on box
-- .. put in focus
+- x put in focus
+
+- enable multiple boxes
+	- x flexbox
+	- x show id
+	- .. fix home/work buttons
+
+
 

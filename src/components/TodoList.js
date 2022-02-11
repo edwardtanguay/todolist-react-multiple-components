@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 
 const _todoList = JSON.parse(localStorage.getItem('todoList'));
 
-export const TodoList = () => {
+export const TodoList = ({idCode}) => {
 	const [area, setArea] = useState('home');
 	const [todo, setTodo] = useState('');
 	const [todoList, setTodoList] = useState(_todoList === null ? [] : _todoList);
@@ -40,6 +40,8 @@ export const TodoList = () => {
 
 				<input id="work" type="radio" name="area" value="work" checked={area === "work"} onChange={(e) => handleAreaChange(e) } />
 				<label htmlFor="work">Work</label>
+
+				<span>{idCode}</span>
 
 				<button className="clearButton" onClick={(e) => handleClearButton(e)}>Clear</button>
 
