@@ -1,0 +1,8 @@
+- x create a button, test: show test
+- x change text to large/small
+- x save the text in localhistory 
+- x write history into localStorage
+- x if localStorage empty
+
+- change to home/work
+- change to todo list
