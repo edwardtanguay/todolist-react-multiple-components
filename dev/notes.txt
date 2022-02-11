@@ -8,5 +8,5 @@
 - x change to todo list
 - x reformat layout
 - x put in scrolling on box
-- 
+- .. put in focus
 

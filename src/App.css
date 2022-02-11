@@ -23,12 +23,16 @@ body {
   margin: 0 15px 0 0;
 }
 
-.App .todoListComponent form input[type="text"] {
+.App .todoListComponent form .inputArea {
+  margin: 5px 0 0 0;
+}
+
+.App .todoListComponent form .inputArea input[type="text"] {
   margin: 0 5px 0 0;
   font-size: 1.2rem;
 }
 
-.App .todoListComponent form button {
+.App .todoListComponent form .inputArea button {
   font-size: 1.2rem;
 }
 

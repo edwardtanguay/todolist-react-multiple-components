@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 const _todoList = JSON.parse(localStorage.getItem('todoList'));
 
@@ -6,12 +6,19 @@ export const TodoList = () => {
 	const [area, setArea] = useState('home');
 	const [todo, setTodo] = useState('');
 	const [todoList, setTodoList] = useState(_todoList === null ? [] : _todoList);
+	const todoInputBox = useRef(null);
+
+	useEffect(() => {
+		todoInputBox.current.focus();
+	}, []);
 
 	const handleButtonClick = (e) => {
 		e.preventDefault();
 		todoList.push(`${todo} (${area})`);
 		localStorage.setItem('todoList', JSON.stringify(todoList));
 		setTodoList([...todoList]);
+		setTodo('');
+		todoInputBox.current.focus();
 	}
 
 	return (
@@ -24,7 +31,7 @@ export const TodoList = () => {
 				<label htmlFor="work">Work</label>
 
 				<div className="inputArea">
-					<input type="text" value={todo} onChange={(e) => setTodo(e.target.value)} />
+					<input type="text" ref={todoInputBox} value={todo} onChange={(e) => setTodo(e.target.value)} />
 					<button onClick={(e) => handleButtonClick(e)}>Add Todo</button>
 				</div>
 			</form>
