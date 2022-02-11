@@ -1,15 +1,16 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useRef, useEffect } from 'react';
 
-const _todoList = JSON.parse(localStorage.getItem('todoList'));
-
-export const TodoList = ({idCode}) => {
+export const TodoList = ({ idCode }) => {
 	const [area, setArea] = useState('home');
 	const [todo, setTodo] = useState('');
-	const [todoList, setTodoList] = useState(_todoList === null ? [] : _todoList);
+	const [todoList, setTodoList] = useState([]);
 	const todoInputBox = useRef(null);
 
 	useEffect(() => {
-		todoInputBox.current.focus();
+		const _todoList = JSON.parse(localStorage.getItem('todoList'));
+		setTodoList([..._todoList]);
+		idCode === 'person001' && todoInputBox.current.focus();
 	}, []);
 
 	const handleClearButton = (e) => {
@@ -32,14 +33,18 @@ export const TodoList = ({idCode}) => {
 		todoInputBox.current.focus();
 	}
 
+	const addPrefix = (text) => {
+		return `${idCode}-${text}`;
+	}
+
 	return (
 		<div className="todoListComponent">
 			<form>
-				<input id="home" type="radio" name="area" value="home" checked={area === "home"} onChange={(e) => handleAreaChange(e) } />
-				<label htmlFor="home">Home</label>
+				<input id={addPrefix('home')} type="radio" name="area" value="home" checked={area === "home"} onChange={(e) => handleAreaChange(e)} />
+				<label htmlFor={addPrefix('home')}>Home</label>
 
-				<input id="work" type="radio" name="area" value="work" checked={area === "work"} onChange={(e) => handleAreaChange(e) } />
-				<label htmlFor="work">Work</label>
+				<input id={addPrefix('work')} type="radio" name="area" value="work" checked={area === "work"} onChange={(e) => handleAreaChange(e)} />
+				<label htmlFor={addPrefix('work')}>Work</label>
 
 				<span>{idCode}</span>
 
