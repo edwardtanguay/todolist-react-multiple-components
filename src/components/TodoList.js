@@ -7,34 +7,40 @@ export const TodoList = ({ idCode }) => {
 	const [todoList, setTodoList] = useState([]);
 	const todoInputBox = useRef(null);
 
+	const addPrefix = (text) => {
+		return `${idCode}-${text}`;
+	}
+
 	useEffect(() => {
-		const _todoList = JSON.parse(localStorage.getItem('todoList'));
-		setTodoList([..._todoList]);
+		const _todoList = JSON.parse(localStorage.getItem(addPrefix('todoList')));
+		_todoList !== null && setTodoList([..._todoList]);
 		idCode === 'person001' && todoInputBox.current.focus();
 	}, []);
 
+	const saveToLocalStorage = (_todoList) => {
+		localStorage.setItem(addPrefix('todoList'), JSON.stringify(_todoList));
+	}
+
 	const handleClearButton = (e) => {
 		e.preventDefault();
-		localStorage.setItem('todoList', JSON.stringify([]));
+		saveToLocalStorage([]);
 		setTodoList([]);
 		todoInputBox.current.focus();
 	}
 
 	const handleAddTodoButton = (e) => {
 		e.preventDefault();
-		todoList.push(`${todo} (${area})`);
-		localStorage.setItem('todoList', JSON.stringify(todoList));
-		setTodo('');
+		if (todo.trim() !== '') {
+			todoList.push(`${todo} (${area})`);
+			saveToLocalStorage(todoList);
+			setTodo('');
+		}
 		todoInputBox.current.focus();
 	}
 
 	const handleAreaChange = (e) => {
 		setArea(e.target.value);
 		todoInputBox.current.focus();
-	}
-
-	const addPrefix = (text) => {
-		return `${idCode}-${text}`;
 	}
 
 	return (

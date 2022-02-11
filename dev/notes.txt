@@ -10,10 +10,11 @@
 - x put in scrolling on box
 - x put in focus
 
-- enable multiple boxes
+- x enable multiple boxes
 	- x flexbox
 	- x show id
-	- .. fix home/work buttons
+	- x fix home/work buttons
+	- x save individual 
 
 
 
