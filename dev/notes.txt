@@ -4,5 +4,5 @@
 - x write history into localStorage
 - x if localStorage empty
 
-- change to home/work
-- change to todo list
+- x change to home/work
+- x change to todo list

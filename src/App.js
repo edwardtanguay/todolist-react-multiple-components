@@ -1,11 +1,10 @@
 import './App.scss';
-import { TextFormWithHistory } from './components/TextFormWithHistory';
+import { TodoList } from './components/TodoList';
 
 function App() {
 	return (
 		<div className="App">
-			<TextFormWithHistory/>
-			<TextFormWithHistory/>
+			<TodoList/>
 		</div>
 	);
 }
