@@ -12,27 +12,40 @@ export const TodoList = () => {
 		todoInputBox.current.focus();
 	}, []);
 
-	const handleButtonClick = (e) => {
+	const handleClearButton = (e) => {
+		e.preventDefault();
+		localStorage.setItem('todoList', JSON.stringify([]));
+		setTodoList([]);
+		todoInputBox.current.focus();
+	}
+
+	const handleAddTodoButton = (e) => {
 		e.preventDefault();
 		todoList.push(`${todo} (${area})`);
 		localStorage.setItem('todoList', JSON.stringify(todoList));
-		setTodoList([...todoList]);
 		setTodo('');
+		todoInputBox.current.focus();
+	}
+
+	const handleAreaChange = (e) => {
+		setArea(e.target.value);
 		todoInputBox.current.focus();
 	}
 
 	return (
 		<div className="todoListComponent">
 			<form>
-				<input id="home" type="radio" name="area" value="home" checked={area === "home"} onChange={(e) => setArea(e.target.value)} />
+				<input id="home" type="radio" name="area" value="home" checked={area === "home"} onChange={(e) => handleAreaChange(e) } />
 				<label htmlFor="home">Home</label>
 
-				<input id="work" type="radio" name="area" value="work" checked={area === "work"} onChange={(e) => setArea(e.target.value)} />
+				<input id="work" type="radio" name="area" value="work" checked={area === "work"} onChange={(e) => handleAreaChange(e) } />
 				<label htmlFor="work">Work</label>
+
+				<button className="clearButton" onClick={(e) => handleClearButton(e)}>Clear</button>
 
 				<div className="inputArea">
 					<input type="text" ref={todoInputBox} value={todo} onChange={(e) => setTodo(e.target.value)} />
-					<button onClick={(e) => handleButtonClick(e)}>Add Todo</button>
+					<button onClick={(e) => handleAddTodoButton(e)}>Add Todo</button>
 				</div>
 			</form>
 			<div className="todoList">
